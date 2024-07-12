@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cm464e5jlheoc"]
 
 [ext_resource type="PackedScene" uid="uid://c2gpvtk0nrp34" path="res://elements/knife_shooter/knife_shooter.tscn" id="1_leyui"]
-[ext_resource type="PackedScene" uid="uid://di71o86sqgolf" path="res://elements/targets/target.tscn" id="2_uyjox"]
+[ext_resource type="PackedScene" uid="uid://di71o86sqgolf" path="res://elements/targets/target/target.tscn" id="2_uyjox"]
 
 [node name="Game" type="Node2D"]
 

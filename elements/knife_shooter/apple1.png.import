@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://yr3d2gdfsoy4"
-path="res://.godot/imported/apple1.png-8942d5e92ab31adc9f36712d311ef3c7.ctex"
+path="res://.godot/imported/apple1.png-b5644cd9afda6bfcdb7a88a35ce5b03e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/apple1.png"
-dest_files=["res://.godot/imported/apple1.png-8942d5e92ab31adc9f36712d311ef3c7.ctex"]
+source_file="res://elements/knife_shooter/apple1.png"
+dest_files=["res://.godot/imported/apple1.png-b5644cd9afda6bfcdb7a88a35ce5b03e.ctex"]
 
 [params]
 

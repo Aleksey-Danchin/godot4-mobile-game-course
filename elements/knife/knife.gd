@@ -22,4 +22,3 @@ func add_knife_to_target (target: Target):
 	get_parent().remove_child(self)
 	global_position = Target.KNIFE_POSITION
 	target.add_object_with_pivot(self, -target.rotation)
-
