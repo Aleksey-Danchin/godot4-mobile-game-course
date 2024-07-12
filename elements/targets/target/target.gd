@@ -20,8 +20,8 @@ var speed := PI
 func _ready():
 	add_default_items(3, 2)
 	
-	await get_tree().create_timer(1).timeout
-	explode()
+	#await get_tree().create_timer(1).timeout
+	#explode()
 
 func _physics_process(delta: float):
 	rotation += speed * delta
