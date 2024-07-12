@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://di71o86sqgolf"]
+[gd_scene load_steps=8 format=3 uid="uid://di71o86sqgolf"]
 
 [ext_resource type="Script" path="res://elements/targets/target/target.gd" id="1_6e47t"]
 [ext_resource type="Texture2D" uid="uid://cy61tdinvfpay" path="res://assets/target1.png" id="1_8ry5f"]
 [ext_resource type="Texture2D" uid="uid://cso6wdxm7tlg8" path="res://assets/knife1.png" id="3_2rieh"]
+[ext_resource type="Texture2D" uid="uid://c3pqjrpygg8f0" path="res://assets/target1_1.png" id="4_ygixd"]
+[ext_resource type="Texture2D" uid="uid://dpv4pch7wmw7d" path="res://assets/target1_2.png" id="5_e3u43"]
+[ext_resource type="Texture2D" uid="uid://djf4vlqrns7hj" path="res://assets/target1_3.png" id="6_ysp0p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6axg"]
 radius = 125.016
@@ -36,3 +39,45 @@ initial_velocity_min = 300.0
 initial_velocity_max = 300.0
 angular_velocity_min = -200.0
 angular_velocity_max = 200.0
+
+[node name="TargetParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("4_ygixd")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+
+[node name="TargetParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("5_e3u43")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+
+[node name="TargetParticles2D3" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+texture = ExtResource("6_ysp0p")
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 400)
+initial_velocity_min = 150.0
+initial_velocity_max = 250.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
