@@ -24,22 +24,6 @@ shape = SubResource("CircleShape2D_k6axg")
 [node name="ItemsContainer" type="Node2D" parent="."]
 show_behind_parent = true
 
-[node name="KnifeParticles2D" type="CPUParticles2D" parent="."]
-emitting = false
-amount = 5
-lifetime = 1.4
-one_shot = true
-preprocess = 0.2
-explosiveness = 1.0
-texture = ExtResource("3_2rieh")
-direction = Vector2(0, -1)
-spread = 80.0
-gravity = Vector2(0, 600)
-initial_velocity_min = 300.0
-initial_velocity_max = 300.0
-angular_velocity_min = -200.0
-angular_velocity_max = 200.0
-
 [node name="TargetParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 1
@@ -81,3 +65,19 @@ initial_velocity_min = 150.0
 initial_velocity_max = 250.0
 angular_velocity_min = -100.0
 angular_velocity_max = 100.0
+
+[node name="KnifeParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 5
+lifetime = 1.4
+one_shot = true
+preprocess = 0.2
+explosiveness = 1.0
+texture = ExtResource("3_2rieh")
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, 600)
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+angular_velocity_min = -200.0
+angular_velocity_max = 200.0
