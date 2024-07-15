@@ -17,14 +17,18 @@ var speed := PI
 @onready var knife_particles = $KnifeParticles2D
 @onready var target_particles_parts = [$TargetParticles2D, $TargetParticles2D2, $TargetParticles2D3]
 
-func _ready():
-	add_default_items(3, 2)
+#func _ready():
+	#add_default_items(3, 2)
 	
 	#await get_tree().create_timer(1).timeout
 	#explode()
 
 func _physics_process(delta: float):
 	rotation += speed * delta
+
+func take_damage():
+	if Globals.knifes == 0:
+		explode()
 
 func explode ():
 	var tween := create_tween()
@@ -41,6 +45,8 @@ func explode ():
 		target_particles_part.emitting = true
 	
 	tween.play()
+	await tween.finished
+	Globals.change_stage(Globals.current_stage + 1)
 
 func add_object_with_pivot (object: Node2D, object_rotation: float):
 	var pivot := Node2D.new()

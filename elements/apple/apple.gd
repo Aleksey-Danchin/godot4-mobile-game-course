@@ -12,6 +12,7 @@ func _on_area_2d_body_entered(body):
 		var tween = create_tween()
 		
 		is_hited = true
+		Globals.add_apples(1)
 		sprite.hide()
 		for particle in particles:
 			particle.emitting = true

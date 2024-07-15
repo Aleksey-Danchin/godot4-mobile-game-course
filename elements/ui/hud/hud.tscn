@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://5emlxl3o21ss"]
+[gd_scene load_steps=7 format=3 uid="uid://5emlxl3o21ss"]
 
 [ext_resource type="Texture2D" uid="uid://cxc0eg6ywmqi5" path="res://assets/background.png" id="1_op84x"]
+[ext_resource type="Script" path="res://elements/ui/hud/hud.gd" id="1_uesus"]
 [ext_resource type="Texture2D" uid="uid://c8avdj5qs1klg" path="res://assets/circle_1.png" id="2_hgvmw"]
 [ext_resource type="Texture2D" uid="uid://fj11q3al6t66" path="res://assets/boss_ico.png" id="3_27ex3"]
 [ext_resource type="Texture2D" uid="uid://dfoxeyqgynyxa" path="res://assets/apple_ico.png" id="4_edusm"]
-[ext_resource type="Texture2D" uid="uid://c5jx2g5jh4i36" path="res://assets/knife_ico_2.png" id="5_1lm7c"]
+[ext_resource type="PackedScene" uid="uid://hjt2d5l0aq4u" path="res://elements/ui/hud/knifes_counter/knifes_counter.tscn" id="6_eobsh"]
 
 [node name="HUD" type="CanvasLayer"]
 layer = 5
+script = ExtResource("1_uesus")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -5
@@ -39,61 +41,68 @@ mouse_filter = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
+[node name="HomeButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "< HOME"
+flat = true
+
+[node name="PointsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "100"
+text = "0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
+[node name="StageCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
 layout_mode = 2
 texture = ExtResource("2_hgvmw")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
 layout_mode = 2
 texture = ExtResource("2_hgvmw")
 stretch_mode = 5
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
 layout_mode = 2
 texture = ExtResource("2_hgvmw")
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
 layout_mode = 2
 texture = ExtResource("2_hgvmw")
 stretch_mode = 5
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/StageCounter"]
 layout_mode = 2
 texture = ExtResource("3_27ex3")
 stretch_mode = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ApplesCounter" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/ApplesCounter"]
 layout_mode = 2
 text = "10"
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/HBoxContainer2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/ApplesCounter"]
 custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
 texture = ExtResource("4_edusm")
 stretch_mode = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-visible = false
+[node name="StageLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "STAGE 10"
 horizontal_alignment = 1
@@ -103,39 +112,8 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-visible = false
+[node name="KnifesCounter" parent="MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("6_eobsh")]
+unique_name_in_owner = true
 layout_mode = 2
-alignment = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect7" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
-
-[node name="TextureRect8" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_1lm7c")
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
