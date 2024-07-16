@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 enum State { IDLE, FLY_TO_TARGET, FLY_AWAY }
+@onready var sprite_2d = $Sprite2D
 
 var state := State.IDLE
 
@@ -10,6 +11,9 @@ var fly_away_direction := Vector2.DOWN
 var fly_away_speed := 1000.0
 var fly_away_rotation_speed := 1500.0
 var fly_await_deviation := PI / 8.0
+
+func _ready ():
+	sprite_2d.texture = Globals.KNIFE_TEXTURES[Globals.active_knife_inde]
 
 func _physics_process (delta: float):
 	match state:
@@ -40,6 +44,7 @@ func handle_collition (collision: KinematicCollision2D):
 		collider.take_damage()
 		Globals.add_point()
 	else:
+		SfxPlayer.play_track(SfxPlayer.AUDIO_TRACKS.KnifeHit)
 		throw_away(collision.get_normal())
 		Events.game_over.emit()
 

@@ -10,14 +10,15 @@ config_version=5
 
 [application]
 
-config/name="godot4-mobile-game-course"
+config/name="Timka knifes kakaher"
 run/main_scene="res://scenes/start_scene/start_screen.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://assets/target5.png"
 
 [autoload]
 
 Events="*res://core/events.gd"
+SfxPlayer="*res://elements/sfx_player/sfx_player.tscn"
 Globals="*res://core/globals.gd"
 Hud="*res://elements/ui/hud/hud.tscn"
 

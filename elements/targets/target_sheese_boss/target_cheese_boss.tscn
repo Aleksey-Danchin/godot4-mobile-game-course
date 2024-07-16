@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://bh6kj1j6qkqk8"]
+
+[ext_resource type="PackedScene" uid="uid://di71o86sqgolf" path="res://elements/targets/target/target.tscn" id="1_7uxgf"]
+[ext_resource type="Script" path="res://elements/targets/target_sheese_boss/target_cheese_boss.gd" id="2_4o5tf"]
+[ext_resource type="Texture2D" uid="uid://cvijg1s7bhscv" path="res://assets/target4.png" id="3_yitfw"]
+[ext_resource type="Texture2D" uid="uid://d02dqah0igmoq" path="res://assets/target4_1.png" id="4_t6si2"]
+[ext_resource type="Texture2D" uid="uid://dnh2g8gh5m7w7" path="res://assets/target4_2.png" id="5_wdya8"]
+[ext_resource type="Texture2D" uid="uid://cvkm5p8fv0cl7" path="res://assets/target4_3.png" id="6_d05un"]
+
+[sub_resource type="Animation" id="Animation_jth0v"]
+resource_name = "motion"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1, 1.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 0.5, 1),
+"update": 0,
+"values": [0.0, -2.00713, -2.26893, 6.28319, 18.8496]
+}
+
+[sub_resource type="Animation" id="Animation_5q4j0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0c8xi"]
+_data = {
+"RESET": SubResource("Animation_5q4j0"),
+"motion": SubResource("Animation_jth0v")
+}
+
+[node name="TargetCheeseBoss" instance=ExtResource("1_7uxgf")]
+script = ExtResource("2_4o5tf")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_yitfw")
+
+[node name="TargetParticles2D" parent="." index="3"]
+texture = ExtResource("4_t6si2")
+
+[node name="TargetParticles2D2" parent="." index="4"]
+texture = ExtResource("5_wdya8")
+
+[node name="TargetParticles2D3" parent="." index="5"]
+texture = ExtResource("6_d05un")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+libraries = {
+"": SubResource("AnimationLibrary_0c8xi")
+}
+autoplay = "motion"

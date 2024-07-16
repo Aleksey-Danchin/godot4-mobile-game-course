@@ -7,8 +7,8 @@ const KNIFE_POSITION := Vector2(0, 180)
 const APPLE_POSITION := Vector2(0, 176)
 const OBJECT_MARGIN := PI / 6
 
-var knife_scene := load("res://elements/knife/knife.tscn")
-var apple_scene := load("res://elements/apple/apple.tscn")
+@onready var knife_scene := load("res://elements/knife/knife.tscn")
+@onready var apple_scene := load("res://elements/apple/apple.tscn")
 
 var speed := PI
 
@@ -16,6 +16,7 @@ var speed := PI
 @onready var sprite = $Sprite2D
 @onready var knife_particles = $KnifeParticles2D
 @onready var target_particles_parts = [$TargetParticles2D, $TargetParticles2D2, $TargetParticles2D3]
+@onready var knife_particles_2d = $KnifeParticles2D
 
 #func _ready():
 	#add_default_items(3, 2)
@@ -23,14 +24,22 @@ var speed := PI
 	#await get_tree().create_timer(1).timeout
 	#explode()
 
+func _ready () :
+	knife_particles_2d.texture = Globals.KNIFE_TEXTURES[Globals.active_knife_inde]
+
 func _physics_process(delta: float):
+	move(delta)
+	
+func move(delta: float):
 	rotation += speed * delta
 
 func take_damage():
+	SfxPlayer.play_track(SfxPlayer.AUDIO_TRACKS.WoodHit)
 	if Globals.knifes == 0:
 		explode()
 
 func explode ():
+	SfxPlayer.play_track(SfxPlayer.AUDIO_TRACKS.TargetExplosion)
 	var tween := create_tween()
 	
 	sprite.hide()

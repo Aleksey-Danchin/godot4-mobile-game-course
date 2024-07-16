@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cesyq0urfwcrv"]
+
+[ext_resource type="AudioStream" uid="uid://byjec8cijwv7g" path="res://assets/audio/wood_hit.wav" id="1_nyeoe"]
+[ext_resource type="Script" path="res://elements/sfx_player/sfx_player.gd" id="1_rnkek"]
+
+[node name="SFXPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_nyeoe")
+script = ExtResource("1_rnkek")

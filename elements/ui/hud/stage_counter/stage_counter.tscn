@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b17dgflpymnbr"]
+
+[ext_resource type="Texture2D" uid="uid://c8avdj5qs1klg" path="res://assets/circle_1.png" id="1_2dwn7"]
+[ext_resource type="Script" path="res://elements/ui/hud/stage_counter/stage_counter.gd" id="1_2qfus"]
+[ext_resource type="Texture2D" uid="uid://fj11q3al6t66" path="res://assets/boss_ico.png" id="2_g3v04"]
+
+[node name="StageCounter" type="HBoxContainer"]
+size_flags_horizontal = 3
+alignment = 1
+script = ExtResource("1_2qfus")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2dwn7")
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2dwn7")
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2dwn7")
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_2dwn7")
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_g3v04")
+stretch_mode = 5

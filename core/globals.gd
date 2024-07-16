@@ -1,5 +1,28 @@
 extends Node
 
+@onready var KNIFE_TEXTURES := [
+	preload("res://assets/knife1.png"),
+	preload("res://assets/knife2.png"),
+	preload("res://assets/knife3.png"),
+	preload("res://assets/knife4.png"),
+	preload("res://assets/knife5.png"),
+	preload("res://assets/knife6.png"),
+	preload("res://assets/knife7.png"),
+	preload("res://assets/knife8.png"),
+	preload("res://assets/knife9.png"),
+]
+
+@onready var TARGETS := [
+	load("res://elements/targets/target/target.tscn"),
+	load("res://elements/targets/target_accelerated/target_accelerated.tscn"),
+]
+
+@onready var BOSSES := [
+	load("res://elements/targets/target_sheese_boss/target_cheese_boss.tscn"),
+]
+
+const BOSS_LEVEL := 5
+
 const location_to_scene = {
 	Events.LOCATIONS.START: preload("res://scenes/start_scene/start_screen.tscn"),
 	Events.LOCATIONS.GAME: preload("res://scenes/game/game.tscn"),
@@ -7,8 +30,8 @@ const location_to_scene = {
 }
 
 const SAVE_GAME_FILE := "user://savegame.save"
-const SAVE_VARIABLES := ['apples']
-
+const SAVE_VARIABLES := ['apples', 'unlocked_knifes', 'active_knife_inde']
+const UNLOCK_COST := 10
 const MAX_STAGE_APPLES := 3
 const MAX_STAGE_KNIFES := 2
 const MIN_KNIFES := 5
@@ -21,11 +44,25 @@ var points := 0
 var knifes := 0
 var apples := 0
 
+var active_knife_inde := 0
+var unlocked_knifes := 0b000000001
+
 func _ready():
 	load_game()
 	rng.randomize()
+	seed(rng.seed)
 	print_debug(rng.seed)
 	Events.location_changed.connect(handle_location_change)
+
+func unlock_knife (knife_index: int):
+	unlocked_knifes |= (1 << knife_index)
+	
+func is_knife_unlocked (knife_index: int) -> bool:
+	return unlocked_knifes & (1 << knife_index) != 0
+
+func change_knife (knife_index: int):
+	active_knife_inde = knife_index
+	Events.active_knife_changed.emit(knife_index)
 
 func load_game ():
 	if not FileAccess.file_exists(SAVE_GAME_FILE):
@@ -67,13 +104,17 @@ func add_apples (amount: int):
 
 func change_stage (starge_i: int):
 	current_stage = starge_i
-	var stage := get_common_stage()
+	var stage: Stage
+	if current_stage % BOSS_LEVEL == 0:
+		stage = Stage.new(BOSSES.pick_random())
+	else:
+		stage = Stage.new() if current_stage == 1 else get_random_stage()
 	knifes = rng.randi_range(MIN_KNIFES, MAX_KNIFES)
 	Events.knifes_changed.emit(knifes)
 	Events.stage_changed.emit(stage)
 
-func get_common_stage () -> Stage:
-	var stage := Stage.new()
+func get_random_stage () -> Stage:
+	var stage := Stage.new(TARGETS.pick_random())
 	stage.apples = rng.randi_range(0, MAX_STAGE_APPLES)
 	stage.knifes = rng.randi_range(0, MAX_STAGE_KNIFES)
 	return stage
